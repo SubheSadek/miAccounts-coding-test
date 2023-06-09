@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\AccountHead;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +14,10 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(AccountHead::class)->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->dateTime('date');
+            $table->float('debit')->nullable();
+            $table->float('credit')->nullable();
             $table->timestamps();
         });
     }
