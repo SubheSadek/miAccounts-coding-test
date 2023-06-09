@@ -1,0 +1,81 @@
+body {
+    background-color: #f5f8fa !important;
+}
+
+.ivu-notice-with-desc i {
+    font-size: 36px !important;
+    top: -6px !important;
+}
+
+.ivu-notice-icon-info i {
+    color: #2d8cf0 !important;
+}
+
+._box_shadow{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.ivu-notice-icon-success i {
+    color: #19be6b !important;
+}
+
+.ivu-notice-icon-warning i {
+    color: #ff9900 !important;
+}
+
+.ivu-notice-icon-error i {
+    color: #ed4014 !important;
+}
+
+.ivu-form-item-error .ivu-input {
+    border-color: #ed4014 !important;
+}
+
+.ivu-form .ivu-form-item-label {
+    color: #181c32 !important;
+}
+
+.ivu-form-item-error-tip {
+    font-weight: 300 !important;
+}
+
+.ivu-modal-body .ivu-form-item {
+    margin-bottom: 20 !important;
+}
+
+
+
+.modal-button {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.modal-button button {
+    margin-right: 10px;
+}
+
+.ivu-modal-confirm-head-icon-confirm i {
+    color: #f90 !important;
+    font-size: 28px !important;
+}
+
+.header-fixed.toolbar-fixed .wrapper {
+    padding-top: 50px !important;
+}
+
+
+._login_redirect {
+    font-weight: 700;
+    padding: 10px;
+    text-align: right;
+}
+
+._login_redirect a:hover {
+    text-decoration: underline !important;
+    transition: 0.5 ease;
+}
+
+._disable_link {
+    pointer-events: none;
+    cursor: default;
+}
