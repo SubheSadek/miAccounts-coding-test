@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(AccountHead::class)->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('date');
-            $table->float('debit')->nullable();
-            $table->float('credit')->nullable();
+            $table->float('debit');
+            $table->float('credit');
             $table->timestamps();
         });
     }
