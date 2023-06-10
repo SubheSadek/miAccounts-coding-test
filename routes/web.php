@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountHeadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controller(AccountHeadController::class)
+    ->prefix('account-heads')->as('account_heads.')
+    ->group(function ($route) {
+        $route->get('/in-hierarchical-view', 'inHierarchicalView')->name('in_hierarchical_view');
+    });
 
 Route::get('/{all?}', function () {
     return view('welcome');

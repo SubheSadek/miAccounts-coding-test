@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AccountHead extends Model
 {
@@ -13,4 +14,9 @@ class AccountHead extends Model
         'name',
         'account_head_id'
     ];
+
+    public function child(): HasMany
+    {
+        return $this->hasMany(AccountHead::class, 'account_head_id', 'id');
+    }
 }
