@@ -16,7 +16,6 @@ class AccountHeadService
         $requestData = $this->formatRequestData($request);
         $accountHeads = AccountHead::whereNull('account_head_id')
             ->with(['child.child'])
-            ->withTotalAmount()
             ->paginate($requestData['limit']);
         // return $accountHeads;
         return AccountHeadHierarchicalResource::collection($accountHeads);

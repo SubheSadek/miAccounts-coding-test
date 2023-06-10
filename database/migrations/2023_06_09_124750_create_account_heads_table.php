@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('account_heads', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->enum('type', ['GROUP', 'HEAD']);
             $table->foreignIdFor(AccountHead::class)->nullable();
             $table->index(['name']);
             $table->timestamps();

@@ -15,6 +15,7 @@ class AccountHead extends Model
 
     protected $fillable = [
         'name',
+        'type',
         'account_head_id'
     ];
 
