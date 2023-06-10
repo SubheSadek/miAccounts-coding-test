@@ -2,8 +2,12 @@
 
 namespace App\Services;
 
+use App\Http\Resources\AccountHeadHierarchicalResource;
 use App\Models\AccountHead;
+use Illuminate\Contracts\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class AccountHeadService
 {
@@ -11,9 +15,11 @@ class AccountHeadService
     {
         $requestData = $this->formatRequestData($request);
         $accountHeads = AccountHead::whereNull('account_head_id')
-            ->with('child')
+            ->with(['child.child'])
+            ->withTotalAmount()
             ->paginate($requestData['limit']);
-        return $accountHeads;
+        // return $accountHeads;
+        return AccountHeadHierarchicalResource::collection($accountHeads);
     }
 
     public function formatRequestData(Request $request)
