@@ -20,7 +20,7 @@ class AccountHeadSeeder extends Seeder
         Transaction::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 15; $i++) {
 
             $parentHead = $this->createHead(null, 'GROUP');
 
