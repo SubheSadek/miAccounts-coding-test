@@ -25,13 +25,26 @@ class AccountHeadSeeder extends Seeder
             $parentHead = $this->createHead();
             $this->createTransaction($parentHead->id);
 
-            $noOfChild = fake()->numberBetween(1, 3);
+            $noOfChild = $this->numberOfChild();
+
             for ($j = 0; $j < $noOfChild; $j++) {
 
                 $childHead = $this->createHead($parentHead->id);
                 $this->createTransaction($childHead->id);
+
+                $noOfSubChild = $this->numberOfChild();
+
+                for ($k = 0; $k < $noOfSubChild; $k++) {
+                    $subChild = $this->createHead($childHead->id);
+                    $this->createTransaction($subChild->id);
+                }
             }
         }
+    }
+
+    function numberOfChild(): int
+    {
+        return fake()->numberBetween(0, 3);
     }
 
     function createHead(int $headId = null): AccountHead
