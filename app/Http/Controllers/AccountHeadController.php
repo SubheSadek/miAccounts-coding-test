@@ -11,10 +11,12 @@ class AccountHeadController extends Controller
     public function __construct(protected AccountHeadService $accountHeadService)
     {
     }
+
     public function inHierarchicalView(Request $request): JsonResponse
     {
         return $this->accountHeadService->getHeadsInHierarchicalView($request);
     }
+
     public function inTableView(Request $request): JsonResponse
     {
         return $this->accountHeadService->getHeadsInTableView($request);

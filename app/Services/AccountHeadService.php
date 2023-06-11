@@ -18,8 +18,10 @@ class AccountHeadService
                 ->with(['child.child'])
                 ->paginate($requestData['limit'])
         );
+
         return withSuccessResourceList($accountHeads);
     }
+
     public function getHeadsInTableView(Request $request): JsonResponse
     {
         $requestData = $this->formatRequestData($request);
@@ -29,6 +31,7 @@ class AccountHeadService
                 ->withTotalAmount()
                 ->paginate($requestData['limit'])
         );
+
         return withSuccessResourceList($accountHeads);
     }
 
@@ -36,7 +39,7 @@ class AccountHeadService
     {
         return [
             'limit' => $request->integer('limit', 10),
-            'page' => $request->integer('page', 1)
+            'page' => $request->integer('page', 1),
         ];
     }
 

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\AccountHead;
 use App\Models\Transaction;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -55,28 +54,31 @@ class AccountHeadSeeder extends Seeder
         }
     }
 
-    function getAccountType(int $noOfSubChild): string
+    public function getAccountType(int $noOfSubChild): string
     {
         if ($noOfSubChild) {
             return 'GROUP';
         }
+
         return 'HEAD';
     }
-    function numberOfChild(): int
+
+    public function numberOfChild(): int
     {
         return fake()->numberBetween(0, 3);
     }
 
-    function createHead(int $headId = null, $type): AccountHead
+    public function createHead(int $headId = null, $type): AccountHead
     {
         $keyValues = [
             'account_head_id' => $headId,
             'type' => $type,
         ];
+
         return AccountHead::factory()->create($keyValues);
     }
 
-    function createTransaction(int $headId): void
+    public function createTransaction(int $headId): void
     {
         $keyValues = [
             'account_head_id' => $headId,

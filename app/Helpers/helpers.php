@@ -10,12 +10,10 @@ function withSuccess(mixed $data = '', string $message = '', int $status = 200):
     return customResponse($data, true, $status, $message);
 }
 
-
 function withSuccessResourceList(ResourceCollection $data, string $message = '', int $status = 200): JsonResponse
 {
     return customResponse($data->response()->getData(), true, $status, $message);
 }
-
 
 function customResponse(mixed $data, string $success, int $status, string $message): JsonResponse
 {

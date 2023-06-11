@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Concerns\QueriesRelationships;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
 
 class AccountHead extends Model
 {
@@ -17,7 +16,7 @@ class AccountHead extends Model
     protected $fillable = [
         'name',
         'type',
-        'account_head_id'
+        'account_head_id',
     ];
 
     public function child(): HasMany
@@ -34,8 +33,8 @@ class AccountHead extends Model
     {
         return $query->withCount([
             'transactions as total' => function (Builder $query) {
-                $query->select(DB::raw("sum(debit) - sum(credit)"));
-            }
+                $query->select(DB::raw('sum(debit) - sum(credit)'));
+            },
         ]);
     }
 

@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Services\AccountHeadService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-
-use App\Services\AccountHeadService;
 
 class AccountHeadHierarchicalResource extends JsonResource
 {
