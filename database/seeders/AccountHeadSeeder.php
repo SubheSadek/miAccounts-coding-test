@@ -37,8 +37,19 @@ class AccountHeadSeeder extends Seeder
                 }
 
                 for ($k = 0; $k < $noOfSubChild; $k++) {
-                    $subChild = $this->createHead($childHead->id, 'HEAD');
-                    $this->createTransaction($subChild->id);
+
+                    $noOfSubSubChild = $this->numberOfChild();
+                    $subType = $this->getAccountType($noOfSubSubChild);
+                    $subChild = $this->createHead($childHead->id, $subType);
+
+                    if ($subType === 'HEAD') {
+                        $this->createTransaction($subChild->id);
+                    }
+
+                    for ($l = 0; $l < $noOfSubSubChild; $l++) {
+                        $subSubChild = $this->createHead($subChild->id, 'HEAD');
+                        $this->createTransaction($subSubChild->id);
+                    }
                 }
             }
         }

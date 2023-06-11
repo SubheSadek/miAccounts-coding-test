@@ -44,15 +44,12 @@ class AccountHeadService
     {
         $total = 0;
 
+        $total += (int) $head->total;
+
         foreach ($head->child as $childItem) {
-            if ($childItem->type === 'HEAD') {
-                $total += $childItem->total;
-            }
-            foreach ($childItem->child as $childSubItem) {
-                $total += $childSubItem->total;
-            }
+            $total += $this->getGroupTotal($childItem);
         }
-        info('inside');
+
         return $total;
     }
 }

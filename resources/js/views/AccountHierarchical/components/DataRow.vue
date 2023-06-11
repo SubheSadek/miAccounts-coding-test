@@ -71,6 +71,33 @@
                             </div>
                         </div>
                     </Col>
+
+                    <Col span="24">
+                        <Row v-for="childSubSubHead in childSubHead.child" :key="childSubSubHead.id" class="_h_b_top">
+    
+                            <Col span="16" class="_h_pl_21">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start flex-column">
+                                        <a href="javascript:void(0)" class="text-dark _disable_link text-hover-primary mb-1 _h_font">
+                                            {{ childSubSubHead.name }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </Col>
+
+                            <Col span="8">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex justify-content-start flex-column">
+                                        <a href="javascript:void(0)" class="text-dark _disable_link text-hover-primary mb-1 _h_font">
+                                            Tk. {{ childSubSubHead.total }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </Col>
+                
+                        </Row>
+
+                    </Col>
             
                 </Row>
 
@@ -99,6 +126,9 @@ const props = defineProps(['head']);
 }
 ._h_pl_14{
     padding-left: 14%;
+}
+._h_pl_21{
+    padding-left: 21%;
 }
 
 ._h_b_top{
