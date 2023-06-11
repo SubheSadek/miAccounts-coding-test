@@ -26,9 +26,9 @@
 Before we get started, make sure that you have the following prerequisites installed on your local machine:
 
 <ul>
-<li>PHP (minimum version: 8.2)</li>
+<li>PHP (version: 8.2)</li>
 <li>Composer (version 2)</li>
-<li>Docker (minimum version: 20.10)</li>
+<li>Docker (version: 20.10)</li>
 <li>Git</li>
 <li>Node (16)</li>
 </ul>
