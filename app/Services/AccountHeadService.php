@@ -40,7 +40,7 @@ class AccountHeadService
         ];
     }
 
-    public function getGroupTotal($head)
+    public function getGroupTotal($head): int
     {
         $total = 0;
 
