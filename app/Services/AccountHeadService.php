@@ -5,8 +5,6 @@ namespace App\Services;
 use App\Http\Resources\AccountHeadHierarchicalResource;
 use App\Http\Resources\AccountHeadTableResource;
 use App\Models\AccountHead;
-use Illuminate\Contracts\Database\Query\Builder;
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -15,29 +13,12 @@ class AccountHeadService
     public function getHeadsInHierarchicalView(Request $request): JsonResponse
     {
         $requestData = $this->formatRequestData($request);
-        return withSuccess(AccountHead::whereNull('account_head_id')
-            ->with([
-                'child' => function (Builder $query) {
-                    $query->withCount('child');
-                },
-                'child.child' => function (Builder $query) {
-                    $query->withTotalAmount();
-                },
-            ])
-            ->paginate($requestData['limit']));
-        // $accountHeads = AccountHeadHierarchicalResource::collection(
-        //     AccountHead::whereNull('account_head_id')
-        //         ->with([
-        //             'child' => function (Builder $query) {
-        //                 $query->with('transactions');
-        //             },
-        //             'child.child' => function (Builder $query) {
-        //                 $query->withTotalAmount();
-        //             },
-        //         ])
-        //         ->paginate($requestData['limit'])
-        // );
-        // return withSuccessResourceList($accountHeads);
+        $accountHeads = AccountHeadHierarchicalResource::collection(
+            AccountHead::whereNull('account_head_id')
+                ->with(['child.child'])
+                ->paginate($requestData['limit'])
+        );
+        return withSuccessResourceList($accountHeads);
     }
     public function getHeadsInTableView(Request $request): JsonResponse
     {
@@ -57,5 +38,21 @@ class AccountHeadService
             'limit' => $request->integer('limit', 10),
             'page' => $request->integer('page', 1)
         ];
+    }
+
+    public function getGroupTotal($head)
+    {
+        $total = 0;
+
+        foreach ($head->child as $childItem) {
+            if ($childItem->type === 'HEAD') {
+                $total += $childItem->total;
+            }
+            foreach ($childItem->child as $childSubItem) {
+                $total += $childSubItem->total;
+            }
+        }
+        info('inside');
+        return $total;
     }
 }

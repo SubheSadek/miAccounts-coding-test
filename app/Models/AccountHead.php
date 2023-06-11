@@ -22,7 +22,7 @@ class AccountHead extends Model
 
     public function child(): HasMany
     {
-        return $this->hasMany(AccountHead::class, 'account_head_id', 'id');
+        return $this->hasMany(AccountHead::class, 'account_head_id', 'id')->withTotalAmount();
     }
 
     public function parent(): BelongsTo

@@ -10,7 +10,6 @@ export const useHierarchicalViewData = () => {
         page: 1,
     });
     const getHierarchicalViewData = async () => {
-        // storeMain.setDataLoading(true);
         const res = await callApi(
             "get",
             "/account-heads/in-hierarchical-view",
@@ -20,9 +19,6 @@ export const useHierarchicalViewData = () => {
         if (res.data.success) {
             storeMain.setAccountHierarchicalData(res.data.json_data);
         }
-        // setTimeout(() => {
-        //     storeMain.setDataLoading(false);
-        // }, 200);
     };
 
     return {

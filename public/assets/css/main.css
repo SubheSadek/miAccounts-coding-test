@@ -88,3 +88,9 @@ body {
 .table.gs-0 th:last-child {
     padding-right: 5px !important;
 }
+
+._btn_tab {
+    position: absolute !important;
+    left: 8% !important;
+    top: 35px !important;
+}

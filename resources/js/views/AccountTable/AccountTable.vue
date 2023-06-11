@@ -17,7 +17,7 @@
             <div class="table-responsive">
 
                 <Transition>
- <!-- v-if="!storeMain.dataLoading" -->
+ 
                     <table class="table table-striped align-middle gs-0 gy-4">
 
                         <thead>

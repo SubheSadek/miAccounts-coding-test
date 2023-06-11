@@ -10,7 +10,6 @@ export const useTableViewData = () => {
         page: 1,
     });
     const getTableViewData = async () => {
-        // storeMain.setDataLoading(true);
         const res = await callApi(
             "get",
             "/account-heads/in-table-view",
@@ -20,9 +19,6 @@ export const useTableViewData = () => {
         if (res.data.success) {
             storeMain.setAccountTableData(res.data.json_data);
         }
-        // setTimeout(() => {
-        //     storeMain.setDataLoading(false);
-        // }, 200);
     };
 
     return {

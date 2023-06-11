@@ -42,7 +42,7 @@
                 <div class="d-flex align-items-center">
                     <div class="d-flex justify-content-start flex-column">
                         <a href="javascript:void(0)" class="text-dark _disable_link text-hover-primary mb-1 _h_font">
-                            {{ childHead.total }}
+                            Tk. {{ childHead.total }}
                         </a>
                     </div>
                 </div>

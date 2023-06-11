@@ -27,6 +27,13 @@
         </div> 
 
 
+            <Page 
+                v-if="storeMain.getAccountHierarchicalData.meta?.total" 
+                @on-page-size-change="e => (params.limit = e, getHierarchicalViewData())"
+                v-model="params.page" @on-change="getHierarchicalViewData" 
+                :total="storeMain.getAccountHierarchicalData.meta.total" show-sizer
+                style="text-align:center;margin-bottom: 2%;" 
+            />
     </div>
 
 </template>
