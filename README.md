@@ -1,5 +1,18 @@
 # miAccounts-coding-test
 
+## Demo
+
+
+### Account heads in hierarchical view
+
+![Alt Text](https://github.com/SubheSadek/repo_images/blob/main/miAccounts/hierarchical.png)
+
+
+### Account heads in Table view
+
+![Alt Text](https://github.com/SubheSadek/repo_images/blob/main/miAccounts/table_view.png)
+
+
 ## Tools & Tech stack used
 - Laravel (back-end api)
 - VueJS (front-end)
@@ -8,21 +21,23 @@
 - MySQL (Database)
 - Pint (Code quality)
 
-
-## Installation and Setup Both Docker and manual
-
-### Sail (Docker) Installation
-
 <h3> Prerequisites </h3>
 
 Before we get started, make sure that you have the following prerequisites installed on your local machine:
 
 <ul>
 <li>PHP (minimum version: 8.2)</li>
-<li>Composer</li>
+<li>Composer (version 2)</li>
 <li>Docker (minimum version: 20.10)</li>
 <li>Git</li>
+<li>Node (16)</li>
 </ul>
+
+## Installation and Setup Both Docker and manual
+
+
+
+### Sail (Docker) Installation
 
 To install this project, follow these steps:
 
