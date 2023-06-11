@@ -1,24 +1,30 @@
 <?php
 
-function withSuccess(mixed $data, string $message = null): object
+//*******************Response Modifier Start************************/
+
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+function withSuccess(mixed $data = '', string $message = '', int $status = 200): JsonResponse
 {
-    return customResponse($data, true, 200, $message);
+    return customResponse($data, true, $status, $message);
 }
 
-function withError(string $message, int $status, mixed $data = null): object
+
+function withSuccessResourceList(ResourceCollection $data, string $message = '', int $status = 200): JsonResponse
 {
-    return customResponse($data, false, $status, $message);
+    return customResponse($data->response()->getData(), true, $status, $message);
 }
-function with422Error(string $message, $data = null): object
-{
-    return customResponse($data, false, 422, ['body' => [$message]]);
-}
-function customResponse(mixed $data, bool $success, int $status, mixed $message = null): object
+
+
+function customResponse(mixed $data, string $success, int $status, string $message): JsonResponse
 {
     return response()->json([
         'json_data' => $data,
-        'success' => $success,
-        'status' => $status,
-        'message' => $message,
+        'success' => (bool) $success,
+        'status' => (int) $status,
+        'message' => (string) $message,
     ], $status);
 }
+
+//*******************Response Modifier End************************/

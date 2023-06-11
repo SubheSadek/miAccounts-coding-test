@@ -12,7 +12,7 @@ body {
 }
 
 ._box_shadow{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
 
 .ivu-notice-icon-success i {
@@ -78,4 +78,13 @@ body {
 ._disable_link {
     pointer-events: none;
     cursor: default;
+}
+
+.table.gs-0 td:first-child,
+.table.gs-0 th:first-child {
+    padding-left: 10px !important;
+}
+
+.table.gs-0 th:last-child {
+    padding-right: 5px !important;
 }

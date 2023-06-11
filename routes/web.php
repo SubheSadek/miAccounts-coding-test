@@ -22,6 +22,7 @@ Route::controller(AccountHeadController::class)
     ->prefix('account-heads')->as('account_heads.')
     ->group(function ($route) {
         $route->get('/in-hierarchical-view', 'inHierarchicalView')->name('in_hierarchical_view');
+        $route->get('/in-table-view', 'inTableView')->name('in_table_view');
     });
 
 Route::get('/{all?}', function () {

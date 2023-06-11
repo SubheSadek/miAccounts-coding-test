@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AccountHeadHierarchicalResource extends JsonResource
+class AccountHeadTableResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,9 +18,9 @@ class AccountHeadHierarchicalResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'account_head_id' => $this->account_head_id,
-            'total' => (int) $this->total,
             'type' => $this->type,
-            'child' => AccountHeadHierarchicalResource::collection($this->child),
+            'total' => (int) $this->total,
+            'parent' => new AccountHeadTableResource($this->parent),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

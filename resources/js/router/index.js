@@ -4,24 +4,22 @@ const routes = [
     {
         path: "/",
         name: "home",
-        component: () => import("../views/Main/Home.vue"),
+        component: () => import("../views/AccountTable/AccountTable.vue"),
         meta: {
-            title: "Dashboard",
-            menuName: "Dashboard",
+            title: "Account Head Tabel",
+            menuName: "Account Head Tabel",
             icon: "homeIcon",
         },
     },
-
     {
-        path: "/vaccine-registration",
-        name: "vaccineRegistration",
+        path: "/hierarchical-view",
+        name: "hierarchical",
         component: () =>
-            import("../views/VaccineRegistration/VaccineRegistraion.vue"),
+            import("../views/AccountHierarchical/AccountHierarchical.vue"),
         meta: {
-            title: "Vaccine Registration",
-            menuName: "Vaccine Registration",
-            icon: null,
-            status: 0,
+            title: "Account Hierarchical View",
+            menuName: "Account Hierarchical View",
+            icon: "homeIcon",
         },
     },
 ];

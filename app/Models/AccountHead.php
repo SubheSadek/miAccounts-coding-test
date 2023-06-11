@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Concerns\QueriesRelationships;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AccountHead extends Model
 {
@@ -19,9 +20,14 @@ class AccountHead extends Model
         'account_head_id'
     ];
 
-    public function child(): QueriesRelationships | HasMany
+    public function child(): HasMany
     {
-        return $this->hasMany(AccountHead::class, 'account_head_id', 'id')->withTotalAmount();
+        return $this->hasMany(AccountHead::class, 'account_head_id', 'id');
+    }
+
+    public function parent(): BelongsTo
+    {
+        return $this->belongsTo(AccountHead::class, 'account_head_id');
     }
 
     public function scopeWithTotalAmount(Builder $query): Builder
@@ -36,5 +42,10 @@ class AccountHead extends Model
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function scopeWhereType(Builder $query, string $type): Builder
+    {
+        return $query->where('type', $type);
     }
 }
