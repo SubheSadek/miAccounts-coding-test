@@ -8,7 +8,15 @@
                 <span class="text-muted mt-1 fw-bold fs-7">Total Records : {{ storeMain.getAccountHierarchicalData.meta?.total }}</span>
             </h3>
 
-            <div class="d-flex align-items-center"></div>
+            <div class="d-flex align-items-center">
+                <Page
+                    v-if="storeMain.getAccountHierarchicalData.meta?.total"
+                    @on-page-size-change="e => (params.limit = e, getHierarchicalViewData())"
+                    v-model="params.page" @on-change="getHierarchicalViewData"
+                    :total="storeMain.getAccountHierarchicalData.meta.total" show-sizer
+                    style="text-align:center;margin-bottom: 2%;"
+                />
+            </div>
 
         </div>
 
@@ -16,23 +24,23 @@
 
             <Row :gutter="16">
 
-                <DataRow 
-                    v-for="(head) in storeMain.getAccountHierarchicalData.data" 
+                <DataRow
+                    v-for="(head) in storeMain.getAccountHierarchicalData.data"
                     :key="(head.id)" :head="head"
                 />
 
             </Row>
 
 
-        </div> 
+        </div>
 
 
-            <Page 
-                v-if="storeMain.getAccountHierarchicalData.meta?.total" 
+            <Page
+                v-if="storeMain.getAccountHierarchicalData.meta?.total"
                 @on-page-size-change="e => (params.limit = e, getHierarchicalViewData())"
-                v-model="params.page" @on-change="getHierarchicalViewData" 
+                v-model="params.page" @on-change="getHierarchicalViewData"
                 :total="storeMain.getAccountHierarchicalData.meta.total" show-sizer
-                style="text-align:center;margin-bottom: 2%;" 
+                style="text-align:center;margin-bottom: 2%;"
             />
     </div>
 
@@ -63,7 +71,7 @@ getHierarchicalViewData()
     margin: 6% 8% 3% 8% !important;
 }
 
-._h_row{    
+._h_row{
     padding: 5px 40px;
     background: #f5f5f5;
     border-bottom: 1px solid #dbdbdb;
