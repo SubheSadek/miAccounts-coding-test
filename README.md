@@ -99,7 +99,7 @@ php artisan sail:install
 sail artisan migrate
 ```
 
-8. Run the database migrations:
+8. Run the seeder:
 
 ```python
 sail artisan db:seed
@@ -156,9 +156,8 @@ php artisan key:generate
 ```python
 php artisan migrate
 ```
-```
 
-7. Run the database migrations:
+7. Run the seeder:
 
 ```python
 php artisan db:seed
